@@ -96,7 +96,7 @@ public class Flights {
 
 	public void departDate(String departDate) {
 
-		To.sendKeys("SFO");
+		To.sendKeys("SFO1");
 
 	}
 
