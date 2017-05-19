@@ -24,7 +24,7 @@ public class Test1 {
 		flights.clicOneWay();
 		flights.selectFromLocation("BLR");
 		flights.selctToLocation("SFO");
-		flights.selectDepart("");
+		flights.selectDepart("27", "4", "2017");
 		flights.selctPassenegrs("");
 		flights.selecClassType("");
 

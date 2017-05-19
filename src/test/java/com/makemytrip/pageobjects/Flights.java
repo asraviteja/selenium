@@ -1,5 +1,7 @@
 package com.makemytrip.pageobjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,9 +54,6 @@ public class Flights {
 		from.click();
 		from.clear();
 		from.sendKeys(fromLocation);
-	//	driver.findElements(By.xpath("//span[contains(.,'BLR')]")).get(0).click();
-		
-		
 
 	}
 
@@ -71,9 +70,10 @@ public class Flights {
 		to.sendKeys(toLocation);
 	}
 
-	public void selectDepart(String date) {
+	public void selectDepart(String date, String month, String year) {
 
 		depart.click();
+		selectDate(date, month, year);
 
 	}
 
@@ -88,4 +88,27 @@ public class Flights {
 		classType.click();
 
 	}
+	
+	
+	public void selectDate(String date, String month, String year) {
+
+		//driver.findElement(By.linkText("Prev")).click();
+
+		List<WebElement> list = driver.findElements(By
+				.xpath("//td[@data-month='" + month + "' and @data-year='"
+						+ year + "']"));
+
+		// For Each Loop in Java
+		for (WebElement dateElement : list) {
+
+			if (dateElement.getText().contains(date)) {
+
+				dateElement.click();
+				break;
+			}
+
+		}
+
+	}
+	
 }
