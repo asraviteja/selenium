@@ -80,7 +80,7 @@ public class Flights {
 	public void selctPassenegrs(String passenger) {
 
 		pax.click();
-
+		selectPax("1", "1", "1");
 	}
 
 	public void selecClassType(String type) {
@@ -110,5 +110,16 @@ public class Flights {
 		}
 
 	}
-	
+
+	public void selectPax(String adults, String children, String infants) {
+
+		driver.findElement(By.id("js-adult_counter")).findElement(By.xpath("//li[contains(text(), '" + adults + "')]")).click();
+		driver.findElement(By.xpath("//ul[@id='js-child_counter'] //li[contains(text(), '" + children + "')]")).click();
+		driver.findElement(By.xpath("//ul[@id='js-infant_counter'] //li[contains(text(), '" + infants + "')]")).click();
+		
+		driver.findElement(By.xpath("//ul[@id='js-infant_counter']/following-sibling::span")).click();
+		
+		driver.findElement(By.linkText("Done")).click();
+	}
+
 }

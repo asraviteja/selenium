@@ -1,5 +1,7 @@
 package com.makemytrip.tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
@@ -16,6 +18,7 @@ public class Test1 {
 				"/Users/itc/Desktop/Madhu/Softwares/geckodriver");
 		WebDriver driver = new FirefoxDriver();
 		driver.get("http://makemytrip.com");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		MakeMyTripHeader header = new MakeMyTripHeader(driver);
 		header.clickFlights();
