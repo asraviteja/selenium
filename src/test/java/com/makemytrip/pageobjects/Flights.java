@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.makemytrip.utils.CommonUtil;
 
 public class Flights {
 
@@ -37,6 +41,10 @@ public class Flights {
 	@FindBy(id = "hp-widget__class")
 	WebElement classType;
 
+	@FindBy(id = "searchBtn")
+	WebElement searchBtn;
+	
+	
 	public Flights(WebDriver driver) {
 
 		this.driver = driver;
@@ -51,6 +59,8 @@ public class Flights {
 
 	public void selectFromLocation(String fromLocation) {
 
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(from));
 		from.click();
 		from.clear();
 		from.sendKeys(fromLocation);
@@ -65,6 +75,11 @@ public class Flights {
 
 	public void selctToLocation(String toLocation) {
 
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(to));
+		
+		CommonUtil.waitInSeconds(2);
+		
 		to.click();
 		to.clear();
 		to.sendKeys(toLocation);
@@ -77,16 +92,16 @@ public class Flights {
 
 	}
 
-	public void selctPassenegrs(String passenger) {
+	public void selctPassenegrs(String adults, String children, String infants) {
 
 		pax.click();
-		selectPax("1", "1", "1");
+		selectPax(adults, children, infants);
 	}
 
 	public void selecClassType(String type) {
 
 		classType.click();
-
+		selectClass(type);
 	}
 	
 	
@@ -122,4 +137,17 @@ public class Flights {
 		driver.findElement(By.linkText("Done")).click();
 	}
 
+	public void selectClass(String classType) {
+		
+		driver.findElement(By.xpath("//label[text()='" + classType + "']")).click();
+		
+		
+		
+	}
+	
+	public void clickSearchBtn() {
+		
+		searchBtn.click();
+	}
+	
 }
