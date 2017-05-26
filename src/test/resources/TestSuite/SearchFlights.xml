@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Make My Trip Test Suites" verbose="1">
+
+<parameter name="browser"  value="FF"/>
+<parameter name="url"  value="https://www.makemytrip.com/"/>
+<parameter name="from"  value="BLR"/>
+<parameter name="to"  value="SFO"/>
+
+	<test name="Search Tests">
+		<classes>
+			<class name="com.makemytrip.tests.SearchFlightsTest" />
+		</classes>
+	</test>
+
+</suite>

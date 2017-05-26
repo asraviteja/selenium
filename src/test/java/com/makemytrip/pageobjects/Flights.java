@@ -61,6 +61,7 @@ public class Flights {
 
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(from));
+		CommonUtil.waitInSeconds(5);
 		from.click();
 		from.clear();
 		from.sendKeys(fromLocation);
@@ -77,7 +78,6 @@ public class Flights {
 
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOf(to));
-		
 		CommonUtil.waitInSeconds(2);
 		
 		to.click();
@@ -87,13 +87,14 @@ public class Flights {
 
 	public void selectDepart(String date, String month, String year) {
 
+		CommonUtil.waitInSeconds(2);
 		depart.click();
 		selectDate(date, month, year);
 
 	}
 
 	public void selctPassenegrs(String adults, String children, String infants) {
-
+		CommonUtil.waitInSeconds(2);
 		pax.click();
 		selectPax(adults, children, infants);
 	}

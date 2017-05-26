@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.makemytrip.utils.CommonUtil;
+
 public class SearchResultsPage {
 
 	/**
@@ -35,8 +37,7 @@ public class SearchResultsPage {
 	
 	public int getSearchResults() {
 		
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfAllElements(searchResultDetails));
+		CommonUtil.waitInSeconds(10);
 		
 		for (WebElement element: searchResultDetails) {
 			
